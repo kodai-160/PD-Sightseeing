@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href='{% static "Stamp_rally_css" %}'/>
+    </head>
+    <body>
+        <h1>ログイン画面</h1>
+
+        <div class="reg">
+            <form method="post" action="{% url 'Login' %}">
+                {% csrf_token %}
+
+                <table class="reg_form">
+                    <tr>
+                        <td><label for="userid">ユーザーID</label></td>
+                        <td><input type="text" name="userid"></td>
+                        <td><label for="password">パスワード</label></td>
+                        <td><input type="password" name="password"></td>
+                    </tr>
+                </table>
+
+                <input type="submit" class="btn" value="Login">
+            </form>
+            <p class="message">アカウントをお持ちですか？:
+                <a href="{% url 'register' %}">アカウントを作成</a>
+            </p>
+        </div>
+    </body>
+</html>

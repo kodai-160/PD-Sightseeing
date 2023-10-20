@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Contact Form</title>
+    </head>
+
+    <body>
+        <h1>コンタクトフォーム</h1>
+        <p>{{ Message }}</p>
+
+        <!--フォームを定義-->
+        <form action="{% url 'formpage' %}" method="POST">
+        <!-- htmlを自動生成 -->
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="送信">
+        </form>
+
+    </body>
+</html>

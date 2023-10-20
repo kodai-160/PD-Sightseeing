@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>メインページ</title>
+    <link rel="stylesheet" href='{% static "Stamp_rally_css/style.css" %}' />
+    <meta name="description" content="金沢観光をもっと盛り上げるためのスタンプラリー">
+</head>
+
+<body>
+    <header class="page-header">
+        <h1><a href=''><img class="logo" src="{% static 'images/top.png' %}" alt="金沢観光"></a></h1>
+        <nav>
+            <ul class="main-nav">
+                {% if user.is_authenticated %}
+                <!-- ログインしている場合のコンテンツ -->
+                <li><a href="{% url 'Logout' %}">ログアウト</a></li>
+                {% else %}
+                <!-- ログインしていない場合のコンテンツ -->
+                <li><a href="{% url 'register' %}">新規登録</a></li>fhuiefkqdwqd
+                <li><a href="{% url 'Login' %}">ログイン</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <a><img src="{% static 'images/home.png' %}" alt="Home Image"></a>
+    </div>
+
+    {% if user.is_authenticated %}
+    <!-- ログインしている場合のコンテンツ -->
+    <p>ログアウトは <a href="{% url 'Logout' %}">こちら</a></p>
+    {% endif %}
+
+</body>
+
+</html>

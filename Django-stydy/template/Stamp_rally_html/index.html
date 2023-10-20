@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ja" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Django Page</title>
+
+        <!--ここにJavaScriptを読み込むコード-->
+        <script src="{% static 'js/script.js' %}"></script>
+    </head>
+
+    <body>
+        <h1>Hello World</h1>
+        <p>{{message_me}}</p>
+    </body>
+
+</html>
