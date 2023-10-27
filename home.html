@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>メインページ</title>
+    <link rel="stylesheet" href='{% static "Stamp_rally_css/style.css" %}' />
+    <meta name="description" content="金沢観光をもっと盛り上げるためのスタンプラリー">
+</head>
+
+<body>
+    <header class="page-header">
+        <h1><a href=''><img class="logo" src="{% static 'images/top.png' %}" alt="金沢観光"></a></h1>
+        <nav>
+            <ul class="main-nav">
+                {% if user.is_authenticated %}
+                <!-- ログインしている場合のコンテンツ -->
+                <li><a href="{% url 'Logout' %}">ログアウト</a></li>
+                {% else %}
+                <!-- ログインしていない場合のコンテンツ -->
+                <li><a href="{% url 'register' %}">新規登録</a></li>fhuiefkqdwqd
+                <li><a href="{% url 'Login' %}">ログイン</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <a><img src="{% static 'images/home.png' %}" alt="Home Image"></a>
+    </div>
+
+    {% if user.is_authenticated %}
+    <!-- ログインしている場合のコンテンツ -->
+    <p>ログアウトは <a href="{% url 'Logout' %}">こちら</a></p>
+    {% endif %}
+
+
+
+
+
+    <section id="location">
+        <div class="wrapper">
+            <div class="location-info">
+                <h3 class="sub-title">ひがし茶屋街</h3>
+                <p>
+                    住所:〒920-0831 石川県金沢市東山１丁目<br>
+                    電話:076-220-2469<br>
+                </p>
+            </div><!-- /.location-info -->
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6408.631933685225!2d136.66184121293372!3d36.57060295743724!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff83374a1baf0b1%3A0xbb8c7a215e6a0d74!2z44Gy44GM44GX6Iy25bGL6KGX!5e0!3m2!1sja!2sjp!4v1697785188233!5m2!1sja!2sjp" width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div><!-- /.location-map -->
+        </div><!-- /.wrapper -->
+    </section><!-- /#location -->
+
+    <section id="location">
+        <div class="wrapper">
+            <div class="location-info">
+                <h3 class="sub-title">金沢城公園</h3>
+                <p>
+                    住所:〒920-0937 石川県金沢市丸の内１−１<br>
+                    電話:076-234-3800<br>
+                    営業時間:7:00~17:00
+                </p>
+            </div><!-- /.location-info -->
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6714.291437274039!2d136.65706832774487!3d36.56415706309321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff833823df14795%3A0xa827189e97e61e4a!2z6YeR5rKi5Z-O5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1697785838475!5m2!1sja!2sjp" width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div><!-- /.location-map -->
+        </div><!-- /.wrapper -->
+    </section><!-- /#location -->
+
+    <section id="location">
+        <div class="wrapper">
+            <div class="location-info">
+                <h3 class="sub-title">金沢城公園</h3>
+                <p>
+                    住所:〒920-0937 石川県金沢市丸の内１−１<br>
+                    電話:076-234-3800<br>
+                    営業時間:7:00~17:00
+                </p>
+            </div><!-- /.location-info -->
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6714.291437274039!2d136.65706832774487!3d36.56415706309321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff833823df14795%3A0xa827189e97e61e4a!2z6YeR5rKi5Z-O5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1697785838475!5m2!1sja!2sjp" width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div><!-- /.location-map -->
+        </div><!-- /.wrapper -->
+    </section><!-- /#location -->
+    
+   
+
+    
+</body>
+
+</html>
