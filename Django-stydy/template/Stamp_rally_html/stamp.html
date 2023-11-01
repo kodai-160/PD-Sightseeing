@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スタンプラリーの台紙</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .stamp-card {
+            border: 3px solid #3498db; /* 外枠の色 */
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 350px;
+        }
+        .row {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .stamp {
+            width: 100px;
+            height: 100px;
+            border: 1px dashed #000;
+            display: inline-block;
+            margin: 5px;
+            border-radius: 50%; /* 丸型にするためのスタイル */
+            line-height: 100px; /* テキストを垂直方向の中央に配置 */
+            vertical-align: middle; /* テキストを水平方向の中央に配置 */
+        }
+        .row:nth-child(2) .stamp:nth-child(1) { background-color: rgba(255, 99, 132, 0.3); }
+        .row:nth-child(2) .stamp:nth-child(2) { background-color: rgba(54, 162, 235, 0.3); }
+        .row:nth-child(2) .stamp:nth-child(3) { background-color: rgba(255, 206, 86, 0.3); }
+        .row:nth-child(3) .stamp:nth-child(1) { background-color: rgba(75, 192, 192, 0.3); }
+        .row:nth-child(3) .stamp:nth-child(2) { background-color: rgba(153, 102, 255, 0.3); }
+        .row:nth-child(3) .stamp:nth-child(3) { background-color: rgba(255, 159, 64, 0.3); }
+        .row:nth-child(4) .stamp:nth-child(1) { background-color: rgba(255, 129, 102, 0.3); }
+        .row:nth-child(4) .stamp:nth-child(2) { background-color: rgba(99, 132, 255, 0.3); }
+        .row:nth-child(4) .stamp:nth-child(3) { background-color: rgba(132, 255, 144, 0.3); }
+    </style>
+</head>
+<body>
+    <h1>スタンプラリー</h1>
+    <form method="post" action="{% url 'sample' %}">
+        {% csrf_token %}
+        <div class="stamp-card">
+            <h2>スタンプカード</h2>
+            <div class="row">
+                <button type="submit" name="stamp" value="兼六園" class="stamp">兼六園</button>
+                <button type="submit" name="stamp" value="金沢城" class="stamp">金沢城</button>
+                <button type="submit" name="stamp" value="21世紀美術館" class="stamp">21世紀美術館</button>
+            </div>
+            <div class="row">
+                <button type="submit" name="stamp" value="4" class="stamp">4</button>
+                <button type="submit" name="stamp" value="5" class="stamp">5</button>
+                <button type="submit" name="stamp" value="6" class="stamp">6</button>
+            </div>
+            <div class="row">
+                <button type="submit" name="stamp" value="7" class="stamp">7</button>
+                <button type="submit" name="stamp" value="8" class="stamp">8</button>
+                <button type="submit" name="stamp" value="9" class="stamp">9</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

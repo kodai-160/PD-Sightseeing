@@ -136,3 +136,18 @@ class  AccountRegistration(TemplateView):
             print(self.params["account_form"].errors)
             
         return render(request, "Stamp_rally_html/register.html", context=self.params)
+
+#スタンプラリーの台紙を表示させる機能    
+def stamp(request):
+    return render(request,'Stamp_rally_html/stamp.html')    
+    
+#スタンプが押されたときの処理機能
+def sample(request):
+    if request.method == "POST":
+        stamp = request.POST.get('stamp')
+        if stamp:
+            # スタンプが押されたときの処理
+            # 例: スタンプの名前に応じて異なるページにリダイレクト
+            return render(request, 'Stamp_rally_html/sample.html')
+    # POSTでない場合や、スタンプが押されていない場合は元のページを表示
+    return render(request, 'Stamp_rally_html/stamp.html')

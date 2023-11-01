@@ -12,4 +12,6 @@ urlpatterns = [
     path('formpage', views.FormView.as_view(),name='formpage'),
     path('logout', views.Logout,name='Logout'),
     path('Login',views.Login,name="Login"),
+    path('sample',views.sample,name="sample"),
+    path('stamp',views.stamp,name="stamp"),
 ]
