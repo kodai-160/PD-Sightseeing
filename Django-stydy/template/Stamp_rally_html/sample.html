@@ -3,10 +3,80 @@
     <head>
         <meta charset="utf-8">
         <title>兼六園</title>
+        <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
     </head>
     <body>
+        <header>
+            <div>
+                <a href="../">ホーム</a>
+                <a href="../stamp">スタンプ</a>
+                <a href="../sample">kenrokuen</a>
+            </div>
+        </header>
         <h1>兼六園</h1>
-        <p>QRコードを読み込む</p>
+        <p>-------------</p>
+                
+        <button onclick="startCamera()">QRコード読みとり</button>
+        <video></video>
+        <button onclick="startCamera()">カメラ起動・QRコード読み取り開始</button>
+        <video id="video" style="display:none;"></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <script>
+            let videoStream;
+    
+            function startCamera() {
+                const videoElement = document.getElementById('video');
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then((stream) => {
+                        videoStream = stream;
+                        videoElement.srcObject = stream;
+                        videoElement.play();
+                        scanQRCode();
+                    })
+                    .catch((error) => {
+                        console.error('カメラのアクセスに失敗しました:', error);
+                    });
+            }
+    
+            function scanQRCode() {
+                const videoElement = document.getElementById('video');
+                const canvasElement = document.getElementById('canvas');
+                const canvasContext = canvasElement.getContext('2d');
+    
+                const scan = () => {
+                    if (videoElement.readyState === videoElement.HAVE_ENOUGH_DATA) {
+                        canvasElement.height = videoElement.videoHeight;
+                        canvasElement.width = videoElement.videoWidth;
+                        canvasContext.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+                        const imageData = canvasContext.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                        const code = jsQR(imageData.data, imageData.width, imageData.height);
+    
+                        if (code) {
+                            console.log('QRコード検出:', code.data);
+                            stopCamera();
+                            alert(`QRコード検出: ${code.data}`);
+                            return;
+                        }
+                    }
+                    requestAnimationFrame(scan);
+                };
+    
+                scan();
+            }
+    
+            function stopCamera() {
+                if (videoStream) {
+                    videoStream.getTracks().forEach(track => {
+                        track.stop();
+                    });
+                }
+            }
+            
+        </script>
+
+        <button><a href="../stamp">戻る</a></button>
+        
+        <p>-------------</p>
         <p>地図</p>
         <p>コメント機能</p>
-    </body>
+    </body> 

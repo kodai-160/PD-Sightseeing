@@ -14,4 +14,6 @@ urlpatterns = [
     path('Login',views.Login,name="Login"),
     path('sample',views.sample,name="sample"),
     path('stamp',views.stamp,name="stamp"),
+    path('map',views.map, name="map"),
+    path('scan/', views.scan, name='scan'),
 ]

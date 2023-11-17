@@ -10,6 +10,10 @@ from django.contrib.auth.decorators import login_required
 from typing import Any
 from . import forms
 
+#QRコードを読み取り用
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 def index(request):
     #変数設定
@@ -151,3 +155,16 @@ def sample(request):
             return render(request, 'Stamp_rally_html/sample.html')
     # POSTでない場合や、スタンプが押されていない場合は元のページを表示
     return render(request, 'Stamp_rally_html/stamp.html')
+
+def map(request):
+    params = {"message_me": "地図です"}
+    return render(request, "Stamp_rally_html/home.html", context=params)
+
+@csrf_exempt  # CSRFトークンのチェックを無効化
+def scan(request):
+    if request.method == 'POST':
+        qr_data = request.POST.get('qr_data')
+        
+        # QRデータを処理するロジック
+        return JsonResponse({'status': 'success', 'qr_data': qr_data})
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
